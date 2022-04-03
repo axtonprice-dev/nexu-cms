@@ -16,19 +16,21 @@
 
 ### ✨ [Click for Live Demo](nexucms.axtonprice.com)
 
-## Usage
+## Installation
 
-Upload latest release to your webserver, then extract the ZIP. Latest release can be found in [releases tab](https://github.com/axtonprice/nexu-cms/releases).<br />
-In your browser, navigate to your website installation path of the ZIP. For example, https://axtonprice.com/nexu-cms/ .<br />
-Follow the installation instructions prompted to you on screen. 
-<br />
-<br />⚠️ ***You will not be able to use Nexu CMS or any of it's features until you have completed the installation.***
+1. Download the latest version from the <a href="https://github.com/axtonprice/nexu-cms/releases">releases page</a>. 
+2. Extract the zip file into a directory such as `nexu-cms`. 
+3. Upload the directory `nexu-cms` to your web server or hosting. 
+4. Visit your domain https://example.com/nexu-cms/ 
+5. Follow the Nexu Installer to set up the website. 
+<br><br>⚠️ ***You will not be able to use Nexu CMS or any of it's features until you have completed the installation.***
  
-## System Statistics
+## System Configuration
 
-Navigate to https://yourwebsite.com/nexu-cms/admin/
+• Navigate to https://example.com/nexu-cms/admin/. <br>
+• Once logged in with the credentials created during the installation, you will be able to manage the website customisation settings, as well as create and edit blog content for your site.
 
-## Author
+## Author/s
 
 👤 **axtonprice**
 
