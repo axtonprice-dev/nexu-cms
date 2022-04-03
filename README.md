@@ -16,6 +16,9 @@
 
 ### ✨ [Click for Live Demo](nexucms.axtonprice.com)
 
+## What is Nexu?
+Nexu is a completely free and open sources software designed to allow users to create and customise their own website or blog within minutes; no more complicated interfaces and overpriced services with over-the-top features, simply design the website of your dreams with ease and no hassle.
+
 ## Requirements
 
 - Accessible webserver with PHP support.
