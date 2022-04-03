@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to Nexu CMS 👋</h1>
+<h1>Welcome to Nexu CMS 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-v0.0.1-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/axtonprice/nexu-cms" target="_blank">
@@ -15,6 +15,15 @@
 > The ultimate PHP powered CMS for creating your perfect website or blog forum!
 
 ### ✨ [Click for Live Demo](nexucms.axtonprice.com)
+
+## Requirements
+
+- Accessible webserver with PHP support.
+- PHP v7 or higher version.
+- PHP [MBSTRING](http://php.net/manual/en/book.mbstring.php) module for full UTF-8 support.
+- PHP [GD](http://php.net/manual/en/book.image.php) module for image processing.
+- PHP [DOM](http://php.net/manual/en/book.dom.php) module for DOM manipulation.
+- PHP [JSON](http://php.net/manual/en/book.json.php) module for JSON manipulation
 
 ## Installation
 
