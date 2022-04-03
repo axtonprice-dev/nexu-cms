@@ -26,7 +26,7 @@ Follow the installation instructions prompted to you on screen.
  
 ## System Statistics
 
-Navigate to https://yourwebsite.com/nexu-cms/ncms-system/admin/
+Navigate to https://yourwebsite.com/nexu-cms/admin/
 
 ## Author
 
