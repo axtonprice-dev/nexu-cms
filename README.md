@@ -12,6 +12,8 @@
   </a>
 </p>
 
+<img src="https://cdn.discordapp.com/attachments/765690365256007692/960321540090646578/239fea25-33fb-4436-a8ce-5726d8f3e7ca.png" height="350">
+
 > The ultimate PHP powered CMS for creating your perfect website or blog forum!
 
 ### ✨ [Click for Live Demo](nexucms.axtonprice.com)
