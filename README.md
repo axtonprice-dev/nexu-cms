@@ -25,7 +25,8 @@ Nexu is a completely free and open source software designed to allow users to cr
 - PHP [MBSTRING](http://php.net/manual/en/book.mbstring.php) module for full UTF-8 support.
 - PHP [GD](http://php.net/manual/en/book.image.php) module for image processing.
 - PHP [DOM](http://php.net/manual/en/book.dom.php) module for DOM manipulation.
-- PHP [JSON](http://php.net/manual/en/book.json.php) module for JSON manipulation
+- PHP [JSON](http://php.net/manual/en/book.json.php) module for JSON manipulation.
+- MySQL database credentials, for storing site and configuration data.
 
 ## Installation
 
