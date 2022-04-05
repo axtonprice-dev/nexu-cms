@@ -3,4 +3,4 @@ _env.json
 /versions/*
 /ncms-content/modules/app/database.php
 
-php/* linguist-vendored
+*.php linguist-language=Php
