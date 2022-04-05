@@ -22,4 +22,6 @@ jobs:
           automatic_release_tag: "latest"
           prerelease: true
           title: "Development Build"
-          files: "*"
+          files: |
+            latest.zip
+            LICENSE.txt
