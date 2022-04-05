@@ -11,8 +11,7 @@
     <link rel="icon" type="image/x-icon" href="../../ncms-content/assets/img/favicon.png">
 
     <!-- Icons font CSS-->
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -22,6 +21,7 @@
 
     <!-- Main CSS-->
     <link href="css/main.css" rel="stylesheet" media="all">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
 <body>
@@ -29,88 +29,65 @@
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title">Nexu Installer » Database Connection</h2>
-                    <style>
-                        .alert-danger {
-                            color: white;
-                            background-color: #E52B50;
-                            border-color: red;
-                        }
-
-                        .alert {
-                            position: relative;
-                            padding: 0.75rem 1.25rem;
-                            margin-bottom: 1rem;
-                            border: 1px solid transparent;
-                            border-radius: 0.25rem;
-                        }
-                    </style>
+                    <h2 class="title"><i>
+                            <x style="color:gray">Nexu »</x>
+                        </i> Connect to Database</h2>
 
                     <?php
-
                     if (isset($_POST["hostname"]) && isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["database"]) && isset($_POST["tableprefix"]) && isset($_GET["submit"])) {
-                        error_reporting(0);
                         $hostname = $_POST["hostname"];
                         $username = $_POST["username"];
                         $password = $_POST["password"];
                         $database = $_POST["database"];
+                        $tableprefix = $_POST["tableprefix"];
 
                         $conn = new mysqli($hostname, $username, $password, $database);
 
                         if ($conn->connect_error) {
                     ?>
                             <div class="alert alert-danger">
-                                <strong>Error:</strong> <?= $conn->connect_error ?>
+                                <strong>Error:</strong> <?= $conn->connect_error; ?>
                             </div><br>
                             <script>
-                                window.history.pushState("", "", '/ncms-system/install/');
+                                window.history.pushState("", "", '/ncms-system/install/?pg=1');
                             </script>
                     <?php
+                        } else {
+                            require("../../ncms-content/modules/app/databaseTraffic.php");
+                            // createConfigTable($hostname, $username, $password, $database);
+                            // updateConfiguration($hostname, $username, $password, $database, "database_host", $hostname);
+                            header("Location: ?pg=2");
                         }
                     }
 
                     ?>
 
-                    <form method="post" action="?submit">
-
-                        <div class="col-4">
-                            <div class="input-group">
-                                <label class="label">Hostname</label>
-                                <input class="input--style-4" type="text" name="hostname" placeholder="mysql.example.com" required>
-                            </div>
+                    <form class="row g-3" method="post" action="?pg=1&submit">
+                        <div class="col-12">
+                            <label for="inputAddress" class="form-label">Hostname <x style="color:red">*</x></label>
+                            <input style="padding: 10px" type="text" class="form-control" placeholder="mysql.example.com" name="hostname" required>
                         </div>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Username</label>
-                                    <input class="input--style-4" type="text" name="username" required>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Password</label>
-                                    <input class="input--style-4" type="text" name="password" required>
-                                </div>
-                            </div>
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Database Username <x style="color:red">*</x></label>
+                            <input style="padding: 10px" type="text" class="form-control" name="username" placeholder="admin" required>
                         </div>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Database</label>
-                                    <input class="input--style-4" type="text" name="database" placeholder="nexucms" required>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Table Prefix</label>
-                                    <input class="input--style-4" type="text" name="tableprefix" value="nexucms_" required>
-                                </div>
-                            </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Database Password <x style="color:red">*</x></label>
+                            <input style="padding: 10px" type="text" class="form-control" name="password" placeholder="password123" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Database <x style="color:red">*</x></label>
+                            <input style="padding: 10px" type="text" class="form-control" placeholder="nexu-cms" name="database" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Tables Prefix <x style="color:red">*</x></label>
+                            <input style="padding: 10px" type="text" class="form-control" value="nexucms_" name="tableprefix" required>
                         </div>
 
-                        <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Continue</button>
+                        <div class="col-12"><br>
+                            <button type="submit" class="btn btn-primary btn-lg">Continue »</button>
                         </div>
+
                     </form>
 
                 </div>

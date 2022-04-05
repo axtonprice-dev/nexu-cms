@@ -11,8 +11,7 @@
     <link rel="icon" type="image/x-icon" href="../../ncms-content/assets/img/favicon.png">
 
     <!-- Icons font CSS-->
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -22,6 +21,7 @@
 
     <!-- Main CSS-->
     <link href="css/main.css" rel="stylesheet" media="all">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
 <body>
@@ -29,42 +29,26 @@
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title">Nexu Installer » Website Config</h2>
-
-                    <style>
-                        .alert-danger {
-                            color: white;
-                            background-color: #E52B50;
-                            border-color: red;
-                        }
-
-                        .alert {
-                            position: relative;
-                            padding: 0.75rem 1.25rem;
-                            margin-bottom: 1rem;
-                            border: 1px solid transparent;
-                            border-radius: 0.25rem;
-                        }
-                    </style>
+                    <h2 class="title"><i><x style="color:gray">Nexu »</x></i> Website Configuration</h2>
 
                     <form method="post" action="?submit">
 
                         <div class="col-4">
                             <div class="input-group">
                                 <label class="label">Site Name</label>
-                                <input class="input--style-4" type="text" name="hostname" placeholder="mysql.example.com" required>
+                                <input class="input--style-4" type="text" name="hostname" placeholder="Nexu Community Blog" required>
                             </div>
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Username</label>
+                                    <label class="label">Site Description</label>
                                     <input class="input--style-4" type="text" name="username" required>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Password</label>
+                                    <label class="label">Keywords</label>
                                     <input class="input--style-4" type="password" name="password" required>
                                 </div>
                             </div>
@@ -85,7 +69,7 @@
                         </div>
 
                         <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Continue</button>
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Continue »</button>
                         </div>
                     </form>
 
