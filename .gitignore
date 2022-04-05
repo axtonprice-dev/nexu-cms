@@ -3,4 +3,4 @@ _env.json
 /versions/*
 /ncms-content/modules/app/database.php
 
-php/* ncms-content/*
+php/* ncms-content
