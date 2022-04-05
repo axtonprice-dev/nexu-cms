@@ -36,3 +36,9 @@ function initCheckInstallKey()
         exit;
     }
 }
+
+function initCheckDatabase(){
+    // check database tables presence
+    // check config in config table   
+}
+?>

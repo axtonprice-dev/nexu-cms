@@ -6,7 +6,9 @@ $database = "nexu.cms";
 
 $conn = mysqli_connect($hostname, $username, $password, $database);
 
-mysqli_query($conn, "CREATE TABLE `configuration` (
+mysqli_query(
+    $conn,
+    "CREATE TABLE `configuration` (
     `database_host` varchar(255) NOT NULL,
     `database_username` varchar(255) NOT NULL,
     `database_password` varchar(255) NOT NULL,
@@ -20,8 +22,8 @@ mysqli_query($conn, "CREATE TABLE `configuration` (
     `admin_email` varchar(255) NOT NULL,
     `admin_password` varchar(255) NOT NULL,
     `admin_username` varchar(255) NOT NULL) 
-    ENGINE=InnoDB DEFAULT CHARSET=utf8;");
-
+    ENGINE=InnoDB DEFAULT CHARSET=utf8;"
+);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

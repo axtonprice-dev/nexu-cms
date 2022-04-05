@@ -5,12 +5,10 @@
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Colorlib Templates">
-    <meta name="author" content="Colorlib">
-    <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Nexu CMS | Installation</title>
+    <title>Nexu Installer</title>
+    <link rel="icon" type="image/x-icon" href="../../ncms-content/assets/img/favicon.png">
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -31,7 +29,7 @@
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title">Nexu Installation - Website Config</h2>
+                    <h2 class="title">Nexu Installer » Database Connection</h2>
                     <style>
                         .alert-danger {
                             color: white;
@@ -48,7 +46,30 @@
                         }
                     </style>
 
-                    
+                    <?php
+
+                    if (isset($_POST["hostname"]) && isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["database"]) && isset($_POST["tableprefix"]) && isset($_GET["submit"])) {
+                        error_reporting(0);
+                        $hostname = $_POST["hostname"];
+                        $username = $_POST["username"];
+                        $password = $_POST["password"];
+                        $database = $_POST["database"];
+
+                        $conn = new mysqli($hostname, $username, $password, $database);
+
+                        if ($conn->connect_error) {
+                    ?>
+                            <div class="alert alert-danger">
+                                <strong>Error:</strong> <?= $conn->connect_error ?>
+                            </div><br>
+                            <script>
+                                window.history.pushState("", "", '/ncms-system/install/');
+                            </script>
+                    <?php
+                        }
+                    }
+
+                    ?>
 
                     <form method="post" action="?submit">
 
@@ -68,7 +89,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Password</label>
-                                    <input class="input--style-4" type="password" name="password" required>
+                                    <input class="input--style-4" type="text" name="password" required>
                                 </div>
                             </div>
                         </div>
@@ -88,7 +109,7 @@
                         </div>
 
                         <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Test Connection</button>
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Continue</button>
                         </div>
                     </form>
 
