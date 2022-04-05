@@ -2,3 +2,5 @@ _env.json
 /design/*
 /versions/*
 /ncms-content/modules/app/database.php
+
+php/* ncms-content/*

@@ -45,14 +45,14 @@ if (
     updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "admin_email", encryptData($_POST["adminacc_email"]));
     updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "admin_username", encryptData($_POST["adminacc_username"]));
     updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "admin_password", encryptData($_POST["adminacc_password"]));
-    
+
     $currentJson = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "_env.json");
     $currentJson = json_decode($currentJson, true);
     $newJson["INSTALL_STATE"] = true;
     $newJson = json_encode($newJson);
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "_env.json", $newJson);
     header("Location: ./");
-
+}
 ?>
 
 <body>
@@ -122,4 +122,3 @@ if (
 </body>
 
 </html>
-<!-- end document-->

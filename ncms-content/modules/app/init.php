@@ -37,14 +37,25 @@ function initCheckInstallKey()
     }
 }
 
-function initCheckDatabase(){
+function initCheckDatabase()
+{
     // check database tables presence
     // check config in config table  
-    
+
     $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/database_config.json", true), true);
     $conn = mysqli_connect($json["hostname"], $json["username"], $json["password"], $json["database"]);
-    $table = $json["prefix"] . "configuration";
-    $sql = "SELECT * FROM `$table` WHERE `perm_id` = '1';";
-    mysqli_query($conn, $sql);
-    mysqli_close($conn);
+    $configTable = $json["prefix"] . "configuration";
+
+    $mysqli = new mysqli($json["hostname"], $json["username"], $json["password"], $json["database"]);
+    if ($mysqli->connect_errno) {
+        die("Connect failed: " . $mysqli->connect_error);
+    }
+
+    $query = "SELECT * FROM `$configTable`";
+    $result = $mysqli->query($query);
+
+    while ($row = $result->fetch_array()) {
+        echo '';
+    }
+    
 }
