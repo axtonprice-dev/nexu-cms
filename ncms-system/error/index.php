@@ -12,13 +12,13 @@ require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/compose_init.php"
     }
 
     if ($error == "404") {
-        require("templates/404.html");
+        require("templates/404.php");
     }
     if ($error == "500") {
-        require("templates/500.html");
+        require("templates/500.php");
     }
     if ($error == "403") {
-        require("templates/403.html");
+        require("templates/403.php");
     }
     if ($error == "install_key_invalid") {
         echo "<h1>Invalid installation key!</h1>";

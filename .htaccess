@@ -1,5 +1,0 @@
-ErrorDocument 404 /ncms-system/error/?error=404
-ErrorDocument 500 /ncms-system/error/?error=500
-ErrorDocument 403 /ncms-system/error/?error=403
-
-
