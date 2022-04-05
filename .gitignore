@@ -2,5 +2,4 @@ _env.json
 /design/*
 /versions/*
 /ncms-content/modules/app/database.php
-
-*.php linguist-language=Php
+/ncms-storage/configuration/*
