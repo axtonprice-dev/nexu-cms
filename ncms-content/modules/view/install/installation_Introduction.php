@@ -43,7 +43,7 @@
 
                     <div class="alert alert-info">
                         <br>
-                        <i class="fa-solid fa-circle-info"></i> <strong>This information required includes:</strong>
+                        <i class="fa-solid fa-circle-info"></i> <strong>The information required includes:</strong>
                         <ul style="padding-bottom:-1vh">
                             <li>Database connection details.</li>
                             <li>Initial site settings (Eg, site name, description, etc).</li>
