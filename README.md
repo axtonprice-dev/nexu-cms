@@ -1,6 +1,9 @@
 <h1>Welcome to Nexu CMS 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-v0.0.1-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/axtonprice/nexu-cms" target="_blank">
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
+  </a>
   <a href="https://github.com/axtonprice/nexu-cms/blob/main/LICENSE" target="_blank">
     <img alt="License: MIT License" src="https://img.shields.io/badge/License-MIT License-yellow.svg" />
   </a>
@@ -16,7 +19,7 @@
 ### ✨ [Click for Live Demo](https://nexucms.axtonprice.com)
 
 ## What is Nexu?
-Nexu is a completely free and open source software designed to allow users to create and customise their own website or blog within minutes- no more complicated interfaces and overpriced services with over-the-top features, simply design the website of your dreams with ease.
+Nexu is a completely free and open sources software designed to allow users to create and customise their own website or blog within minutes; no more complicated interfaces and overpriced services with over-the-top features, simply design the website of your dreams with ease and no hassle.
 
 ## Requirements
 
@@ -25,8 +28,7 @@ Nexu is a completely free and open source software designed to allow users to cr
 - PHP [MBSTRING](http://php.net/manual/en/book.mbstring.php) module for full UTF-8 support.
 - PHP [GD](http://php.net/manual/en/book.image.php) module for image processing.
 - PHP [DOM](http://php.net/manual/en/book.dom.php) module for DOM manipulation.
-- PHP [JSON](http://php.net/manual/en/book.json.php) module for JSON manipulation.
-- MySQL database credentials, for storing site and configuration data.
+- PHP [JSON](http://php.net/manual/en/book.json.php) module for JSON manipulation
 
 ## Installation
 

@@ -7,4 +7,4 @@ require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/init.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/compose_init.php");
 ?>
 
-<h1>Hello world!!</h1>
+<h1>Hello World!</h1>
