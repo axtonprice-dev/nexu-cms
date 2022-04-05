@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+// error_reporting(0);
 function rewriteUrl($loc)
 {
     echo '<script>window.history.pushState("", "", \'' . $loc . '\');</script>';
@@ -11,7 +11,9 @@ if (strpos($_SERVER['REQUEST_URI'], "ncms-system/install")) {
         $_GET["pg"] = null;
     }
 
-    if ($_GET["pg"] == "2") {
+    if ($_GET["pg"] == "3") {
+        require("install/finalisation_Details.php");
+    } elseif ($_GET["pg"] == "2") {
         require("install/website_Configuration.php");
     } elseif ($_GET["pg"] == "1") {
         require("install/database_Connection.php");

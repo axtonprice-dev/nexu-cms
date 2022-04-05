@@ -24,6 +24,35 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
+<?php
+if (
+    isset($_GET['submit']) &&
+    isset($_POST['site_name']) &&
+    isset($_POST['site_description']) &&
+    isset($_POST['adminacc_username']) &&
+    isset($_POST['adminacc_email']) &&
+    isset($_POST['adminacc_password'])
+) {
+    require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/databaseTraffic.php");
+    require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/encryption_Core.php");
+    $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/database_config.json", true), true);
+
+    echo decryptData($json["hostname"]);
+    echo decryptData($json["username"]);
+    echo decryptData($json["password"]);
+    echo decryptData($json["database"]);
+    echo decryptData($json["prefix"]);
+
+    updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "site_keywords", $_POST["site_keywords"]);
+    updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "site_language", "en-US");
+    updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "admin_email", encryptData($_POST["adminacc_email"]));
+    updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "admin_username", encryptData($_POST["adminacc_username"]));
+    updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "admin_password", encryptData($_POST["adminacc_password"]));
+    header("Location: ?pg=3");
+}
+
+?>
+
 <body>
     <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
@@ -33,33 +62,38 @@
                             <x style="color:gray">Nexu »</x>
                         </i> Website Configuration</h2>
 
-                    <?php
-                    // require("../../ncms-content/modules/app/encryption_Core.php");
-                    // $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/database_config.json", true), true);
-                    // echo decryptData($json["hostname"]);
-                    ?>
+                    <form class="row g-3" method="post" action="?pg=2&submit">
 
-                    <form class="row g-3" method="post" action="?pg=3&submit">
-
-                        <div class="col-md-6">
-                            <label for="inputEmail4" class="form-label">Site Name <x style="color:red">*</x></label>
-                            <input style="padding: 10px" type="text" class="form-control" name="username" placeholder="admin" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="inputPassword4" class="form-label">Database Password <x style="color:red">*</x></label>
-                            <input style="padding: 10px" type="text" class="form-control" name="password" placeholder="password123" required>
+                        <div class="col-12">
+                            <label for="inputAddress" class="form-label">Site Name <x style="color:red">*</x></label>
+                            <input style="padding: 10px" type="text" class="form-control" placeholder="Nexu Blog" name="site_name" required>
                         </div>
                         <div class="col-12">
                             <label for="inputAddress" class="form-label">Site Description <x style="color:red">*</x></label>
-                            <input style="padding: 10px" type="text" class="form-control" placeholder="mysql.example.com" name="hostname" required>
+                            <input style="padding: 10px" type="text" class="form-control" placeholder="View latest Nexu articles and updates!" name="site_description" required>
                         </div>
                         <div class="col-md-6">
-                            <label for="inputEmail4" class="form-label">Database <x style="color:red">*</x></label>
-                            <input style="padding: 10px" type="text" class="form-control" placeholder="nexu-cms" name="database" required>
+                            <label for="inputEmail4" class="form-label">Site Email Address <x style="color:red">*</x></label>
+                            <input style="padding: 10px" type="email" class="form-control" placeholder="contact@example.com" name="site_email" required>
                         </div>
                         <div class="col-md-6">
-                            <label for="inputPassword4" class="form-label">Tables Prefix <x style="color:red">*</x></label>
-                            <input style="padding: 10px" type="text" class="form-control" value="nexucms_" name="tableprefix" required>
+                            <label for="inputPassword4" class="form-label">Site Keywords</label>
+                            <input style="padding: 10px" type="text" class="form-control" value="blog, education" name="site_keywords">
+                        </div>
+
+                        <hr>
+
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Admin Account Username <x style="color:red">*</x></label>
+                            <input style="padding: 10px" type="text" class="form-control" placeholder="admin" name="adminacc_username" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Admin Account Password <x style="color:red">*</x></label>
+                            <input style="padding: 10px" type="password" class="form-control" placeholder="" name="adminacc_password" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="inputEmail4" class="form-label">Admin Account Email <x style="color:red">*</x></label>
+                            <input style="padding: 10px" type="email" class="form-control" placeholder="admin@example.com" name="adminacc_email" required>
                         </div>
 
                         <div class="col-12"><br>
