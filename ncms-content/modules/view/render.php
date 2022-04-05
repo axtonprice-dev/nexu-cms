@@ -1,5 +1,5 @@
 <?php
-// error_reporting(0);
+error_reporting(0);
 function rewriteUrl($loc)
 {
     echo '<script>window.history.pushState("", "", \'' . $loc . '\');</script>';

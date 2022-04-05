@@ -29,48 +29,43 @@
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title"><i><x style="color:gray">Nexu »</x></i> Website Configuration</h2>
+                    <h2 class="title"><i>
+                            <x style="color:gray">Nexu »</x>
+                        </i> Website Configuration</h2>
 
-                    <form method="post" action="?submit">
+                    <?php
+                    // require("../../ncms-content/modules/app/encryption_Core.php");
+                    // $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/database_config.json", true), true);
+                    // echo decryptData($json["hostname"]);
+                    ?>
 
-                        <div class="col-4">
-                            <div class="input-group">
-                                <label class="label">Site Name</label>
-                                <input class="input--style-4" type="text" name="hostname" placeholder="Nexu Community Blog" required>
-                            </div>
+                    <form class="row g-3" method="post" action="?pg=3&submit">
+
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Site Name <x style="color:red">*</x></label>
+                            <input style="padding: 10px" type="text" class="form-control" name="username" placeholder="admin" required>
                         </div>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Site Description</label>
-                                    <input class="input--style-4" type="text" name="username" required>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Keywords</label>
-                                    <input class="input--style-4" type="password" name="password" required>
-                                </div>
-                            </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Database Password <x style="color:red">*</x></label>
+                            <input style="padding: 10px" type="text" class="form-control" name="password" placeholder="password123" required>
                         </div>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Database</label>
-                                    <input class="input--style-4" type="text" name="database" placeholder="nexucms" required>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Table Prefix</label>
-                                    <input class="input--style-4" type="text" name="tableprefix" value="nexucms_" required>
-                                </div>
-                            </div>
+                        <div class="col-12">
+                            <label for="inputAddress" class="form-label">Site Description <x style="color:red">*</x></label>
+                            <input style="padding: 10px" type="text" class="form-control" placeholder="mysql.example.com" name="hostname" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Database <x style="color:red">*</x></label>
+                            <input style="padding: 10px" type="text" class="form-control" placeholder="nexu-cms" name="database" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Tables Prefix <x style="color:red">*</x></label>
+                            <input style="padding: 10px" type="text" class="form-control" value="nexucms_" name="tableprefix" required>
                         </div>
 
-                        <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Continue »</button>
+                        <div class="col-12"><br>
+                            <button type="submit" class="btn btn-primary btn-lg">Continue »</button>
                         </div>
+
                     </form>
 
                 </div>

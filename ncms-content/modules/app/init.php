@@ -39,6 +39,12 @@ function initCheckInstallKey()
 
 function initCheckDatabase(){
     // check database tables presence
-    // check config in config table   
+    // check config in config table  
+    
+    $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/database_config.json", true), true);
+    $conn = mysqli_connect($json["hostname"], $json["username"], $json["password"], $json["database"]);
+    $table = $json["prefix"] . "configuration";
+    $sql = "SELECT * FROM `$table` WHERE `perm_id` = '1';";
+    mysqli_query($conn, $sql);
+    mysqli_close($conn);
 }
-?>

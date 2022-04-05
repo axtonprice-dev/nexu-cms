@@ -54,8 +54,15 @@
                     <?php
                         } else {
                             require("../../ncms-content/modules/app/databaseTraffic.php");
-                            // createConfigTable($hostname, $username, $password, $database);
-                            // updateConfiguration($hostname, $username, $password, $database, "database_host", $hostname);
+                            require("../../ncms-content/modules/app/miscellaneous.php");
+                            require("../../ncms-content/modules/app/encryption_Core.php");
+                            createConfigTable($_POST["hostname"], $_POST["username"], $_POST["password"], $_POST["database"], $_POST["tableprefix"],);
+                            updateConfiguration($_POST["hostname"], $_POST["username"], $_POST["password"], $_POST["database"], $_POST["tableprefix"], "site_url", $_SERVER["HTTP_HOST"]);
+                            updateConfiguration($_POST["hostname"], $_POST["username"], $_POST["password"], $_POST["database"], $_POST["tableprefix"], "site_language", "en-US");
+                            updateConfiguration($_POST["hostname"], $_POST["username"], $_POST["password"], $_POST["database"], $_POST["tableprefix"], "admin_email", encryptData("demo@example.com"));
+                            updateConfiguration($_POST["hostname"], $_POST["username"], $_POST["password"], $_POST["database"], $_POST["tableprefix"], "admin_username", encryptData("admin"));
+                            updateConfiguration($_POST["hostname"], $_POST["username"], $_POST["password"], $_POST["database"], $_POST["tableprefix"], "admin_password", encryptData("password"));
+                            storeDatabaseConnection(encryptData($_POST["hostname"]), encryptData($_POST["username"]), encryptData($_POST["password"]), encryptData($_POST["database"]), encryptData($_POST["tableprefix"]));
                             header("Location: ?pg=2");
                         }
                     }
