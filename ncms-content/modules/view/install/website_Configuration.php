@@ -37,19 +37,21 @@ if (
     require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/encryption_Core.php");
     $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/database_config.json", true), true);
 
-    echo decryptData($json["hostname"]);
-    echo decryptData($json["username"]);
-    echo decryptData($json["password"]);
-    echo decryptData($json["database"]);
-    echo decryptData($json["prefix"]);
-
+    updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "site_name", $_POST["site_name"]);
+    updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "site_description", $_POST["site_name"]);
+    updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "site_email", encryptData($_POST["site_name"]));
     updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "site_keywords", $_POST["site_keywords"]);
     updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "site_language", "en-US");
     updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "admin_email", encryptData($_POST["adminacc_email"]));
     updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "admin_username", encryptData($_POST["adminacc_username"]));
     updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "admin_password", encryptData($_POST["adminacc_password"]));
-    header("Location: ?pg=3");
-}
+    
+    $currentJson = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "_env.json");
+    $currentJson = json_decode($currentJson, true);
+    $newJson["INSTALL_STATE"] = true;
+    $newJson = json_encode($newJson);
+    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "_env.json", $newJson);
+    header("Location: ./");
 
 ?>
 
