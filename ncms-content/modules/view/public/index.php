@@ -70,8 +70,10 @@
 	</nav>
 	<!-- End Nav -->
 
-	<!-- Begin Site Title -->
+	<!-- Begin Content Container -->
 	<div class="container">
+
+		<!-- Begin Site Title -->
 		<div class="mainheading">
 			<h1 class="posttitle"><?= $settings["index_welcome_header_message"] ?></h1>
 			<p class="lead">
