@@ -24,6 +24,50 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
+<?php
+
+/* Start Site Settings Setup */
+$site_settings = array(
+    "nav_stories_text" => "Stories",
+    "nav_post_text" => "Post",
+    "nav_author_text" => "Author",
+    "nav_searchbar_placeholder" => "Search",
+
+    "index_welcome_header_message" => "Welcome to %site% 👋",
+    "index_feature_tab_text" => "Featured",
+    "index_all_stores_tab_text" => "All Stories"
+);
+if (!is_dir("../../ncms-storage/configuration/")) mkdir("../../ncms-storage/configuration/", 0777, true);
+if (!file_exists("../../ncms-storage/configuration/site_settings.json")) touch("../../ncms-storage/configuration/site_settings.json");
+file_put_contents("../../ncms-storage/configuration/site_settings.json", json_encode($site_settings));
+/* End Site Settings Setup */
+
+/* Start Update ENV File Install State */
+$newEnv = '{ "INSTALL_KEY": "' . $json["INSTALL_KEY"] . '","INSTALL_STATE": true }';
+file_put_contents("../../_env.json", $newEnv);
+/* End Update ENV File Install State */
+
+/* Start Create ENV backup */
+mkdir("../../ncms-storage/backups/", 0777, true);
+touch("../../ncms-storage/backups/backup_env.json");
+file_put_contents("../../ncms-storage/backups/backup_env.json", $newEnv);
+/* End Create ENV backup */
+
+/* Start Htaccess and User Dir */
+if (!is_dir("../../ncms-storage/user/")) {
+    mkdir("../../ncms-storage/user/", 0777, true);
+    $htaccess = 'Deny from all';
+
+    touch("../../ncms-storage/user/.htaccess");
+    touch("../../ncms-storage/configuration/.htaccess");
+    touch("../../ncms-storage/backups/.htaccess");
+    file_put_contents("../../ncms-storage/user/.htaccess", $htaccess);
+    file_put_contents("../../ncms-storage/configuration/.htaccess", $htaccess);
+    file_put_contents("../../ncms-storage/backups/.htaccess", $htaccess);
+}
+/* End Htaccess and User Dir */
+?>
+
 <body>
     <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
@@ -56,7 +100,8 @@
                     </p>
                     <br>
 
-                    <a type="button" class="btn btn-primary btn-lg" style="text-decoration:none" href="../../">Finish!</a>
+                    <a type="button" class="btn btn-primary btn-lg" style="text-decoration:none" href="../../admin">Admin Dashboard</a>
+                    <a type="button" class="btn btn-secondary btn-lg" style="text-decoration:none" href="../../">View Site</a>
                     <br><br>
 
                 </div>

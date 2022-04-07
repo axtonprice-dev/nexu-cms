@@ -57,9 +57,6 @@
                             require("../../ncms-content/modules/app/encryption_Core.php");
                             updateConfiguration("site_url", $_SERVER["HTTP_HOST"]);
                             updateConfiguration("site_language", "en-US");
-                            updateConfiguration("admin_email", encryptData("demo@example.com"));
-                            updateConfiguration("admin_username", encryptData("admin"));
-                            updateConfiguration("admin_password", encryptData("password"));
                             storeDatabaseConnection(encryptData($_POST["hostname"]), encryptData($_POST["username"]), encryptData($_POST["password"]), encryptData($_POST["database"]), encryptData($_POST["tableprefix"]));
                             header("Location: ?pg=2");
                         }

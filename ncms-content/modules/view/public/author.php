@@ -79,7 +79,7 @@
 					<div class="row post-top-meta authorpage">
 						<div class="col-md-10 col-xs-12">
 							<h1>Sal</h1>
-							<span class="author-description">Founder of <a target="_blank" href="https://www.wowthemes.net">WowThemes.net</a> and creator of <strong>"Mediumish"</strong> theme that you're currently previewing. I professionally develop premium themes, templates & scripts since the Apocalypse (2012). You can reach me out on the social links below.</span>
+							<span class="author-description">Aspiring developer and software engineer, since 2015.</span>
 							<div class="sociallinks"><a target="_blank" href="https://www.facebook.com/wowthemesnet/"><i class="fa fa-facebook"></i></a> <span class="dot"></span> <a target="_blank" href="https://plus.google.com/s/wowthemesnet/top"><i class="fa fa-google-plus"></i></a></div>
 							<a target="_blank" href="https://twitter.com/wowthemesnet" class="btn follow">Follow</a>
 						</div>

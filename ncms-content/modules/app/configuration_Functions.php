@@ -11,13 +11,17 @@ function storeDatabaseConnection($hostname, $username, $password, $database, $pr
         "database" => $database,
         "prefix" => $prefix
     );
+    touch($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/database_config.json");
     file_put_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/database_config.json", json_encode($json));
 }
 
 function updateConfiguration($field, $value)
 {
-    if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/database_config.json")) {
-        touch($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/database_config.json");
+    if(!is_dir($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration")){
+        mkdir("../../ncms-storage/configuration", 0777, true);
+    }
+    if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/site_config.json")) {
+        touch($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/site_config.json");
     }
     $contents = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/site_config.json");
     $contentsDecoded = json_decode($contents, true);

@@ -30,7 +30,8 @@ function initCheckStartup()
 function initCheckInstallKey()
 {
     $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/_env.json", true), true);
-    if ($json["INSTALL_KEY"] == "") {
+    $backupJson = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/backups/backup_env.json", true), true);
+    if ($json["INSTALL_KEY"] == "" || $json["INSTALL_KEY"] != $backupJson["INSTALL_KEY"]) {
         header("Location: ./ncms-system/error/?error=install_key_invalid");
         exit;
     }

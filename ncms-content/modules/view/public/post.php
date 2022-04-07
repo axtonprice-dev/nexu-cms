@@ -126,8 +126,8 @@
 						</div>
 						<div class="col-md-10">
 							<a class="link-dark" href="author">Sal</a><a href="#" class="btn follow">Follow</a>
-							<span class="author-description">Founder of WowThemes.net and creator of <b>"Mediumish"</b> theme that you're currently previewing. Developing professional premium themes, templates, plugins, scripts since 2012.</span>
-							<span class="post-date">22 July 2017</span><span class="dot"></span><span class="post-read">6 min read</span>
+							<span class="author-description">Site administrator, developer</span>
+							<span class="post-date">22 July 2022</span><span class="dot"></span><span class="post-read">6 min read</span>
 						</div>
 					</div>
 					<!-- End Top Menta -->
