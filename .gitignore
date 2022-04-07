@@ -1,4 +1,4 @@
-_env.json
+.env
 Thumbs.db
 /design/*
 /versions/*

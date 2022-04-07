@@ -8,7 +8,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/init.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/compose_init.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/encryption_Core.php");
 
-$env = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/_env.json", true), true);
+$env = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/.env", true), true);
 $config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/site_config.json", true), true);
 $settings = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/site_settings.json", true), true);
 

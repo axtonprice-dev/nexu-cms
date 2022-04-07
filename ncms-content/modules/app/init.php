@@ -13,12 +13,12 @@ function initCheckStartup()
         return $str;
     }
     $path = $_SERVER['DOCUMENT_ROOT'];
-    $envFile = $path . "/_env.json";
-    $encryptionKey = base64_encode(randomString(40));
+    $envFile = $path . "/.env";
+    $encryptionKey = base64_encode(randomString(16));
     if (!file_exists($envFile)) {
         touch($envFile);
     }
-    $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/_env.json", true), true);
+    $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/.env", true), true);
     if (filesize($envFile) == 0 || $json["INSTALL_STATE"] === false) {
         $envContents = json_encode('{ "INSTALL_KEY": "' . $encryptionKey . '","INSTALL_STATE": false }', JSON_PRETTY_PRINT);
         file_put_contents($envFile, json_decode($envContents, JSON_PRETTY_PRINT));
@@ -29,8 +29,8 @@ function initCheckStartup()
 
 function initCheckInstallKey()
 {
-    $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/_env.json", true), true);
-    $backupJson = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/backups/backup_env.json", true), true);
+    $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/.env", true), true);
+    $backupJson = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/backups/backup.env", true), true);
     if ($json["INSTALL_KEY"] == "" || $json["INSTALL_KEY"] != $backupJson["INSTALL_KEY"]) {
         header("Location: ./ncms-system/error/?error=install_key_invalid");
         exit;

@@ -1,5 +1,5 @@
 <?php
-// error_reporting(0);
+error_reporting(0);
 function rewriteUrl($loc)
 {
     echo '<script>window.history.pushState("", "", \'' . $loc . '\');</script>';
@@ -11,7 +11,7 @@ if (strpos($_SERVER['REQUEST_URI'], "ncms-system/install")) {
         $_GET["pg"] = null;
     }
 
-    $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/_env.json", true), true);
+    $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/.env", true), true);
     if ($json["INSTALL_STATE"] === true) {
         header("Location: ../../");
         exit;

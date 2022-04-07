@@ -1,6 +1,8 @@
-ErrorDocument 404 /ncms-system/error/index?error=404
+#ErrorDocument 404 /ncms-system/error/index?error=404
 ErrorDocument 500 /ncms-system/error/index?error=500
 ErrorDocument 403 /ncms-system/error/index?error=403
+ErrorDocument 401 /ncms-system/error/index?error=403
+ErrorDocument 404 /ncms-system/error/index?error=install_key_invalid
 
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-d

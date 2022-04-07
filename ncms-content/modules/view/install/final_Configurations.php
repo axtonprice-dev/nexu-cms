@@ -44,13 +44,13 @@ file_put_contents("../../ncms-storage/configuration/site_settings.json", json_en
 
 /* Start Update ENV File Install State */
 $newEnv = '{ "INSTALL_KEY": "' . $json["INSTALL_KEY"] . '","INSTALL_STATE": true }';
-// file_put_contents("../../_env.json", $newEnv);
+file_put_contents("../../.env", $newEnv);
 /* End Update ENV File Install State */
 
 /* Start Create ENV backup */
-mkdir("../../ncms-storage/backups/", 0777, true);
-touch("../../ncms-storage/backups/backup_env.json");
-file_put_contents("../../ncms-storage/backups/backup_env.json", $newEnv);
+if (!is_dir("../../ncms-storage/backups")) mkdir("../../ncms-storage/backups/", 0777, true);
+if (!file_exists("../../ncms-storage/backups/backup.env")) touch("../../ncms-storage/backups/backup.env");
+file_put_contents("../../ncms-storage/backups/backup.env", $newEnv);
 /* End Create ENV backup */
 
 /* Start Htaccess and User Dir */
@@ -68,6 +68,8 @@ if (!is_dir("../../ncms-storage/user/")) {
 /* End Htaccess and User Dir */
 
 /* Start setup Database */
+require("../../ncms-content/modules/app/configuration_Functions.php");
+require("../../ncms-content/modules/app/encryption_Core.php");
 $config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/database_config.json", true), true);
 setupDatabase(decryptData($config["hostname"]), decryptData($config["username"]), decryptData($config["password"]), decryptData($config["database"]), decryptData($config["prefix"]));
 /* End setup Database */
@@ -99,7 +101,7 @@ setupDatabase(decryptData($config["hostname"]), decryptData($config["username"])
 
                         <br><br>
                     <div class="alert alert-danger">
-                        <i class="fa-solid fa-circle-info"></i> <strong>Warning!</strong> Do not delete or modify the <b>_env.json</b> file from your webserver! Doing so will cause you to lose all encrypted data, even if you have backups!
+                        <i class="fa-solid fa-circle-info"></i> <strong>Warning!</strong> Do not delete or modify the <b>.env</b> file from your webserver! Doing so will cause you to lose all encrypted data, even if you have backups!
                     </div>
 
                     </p>
