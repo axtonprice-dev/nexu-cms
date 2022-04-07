@@ -1,6 +1,23 @@
 <?php
 require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/encryption_Core.php");
-$config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/site_config.json", true), true);
+$config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/_env.json", true), true);
 
-echo decryptData("Hy82kAV4MhmpAnNAHWFww3CK0+9sTg8XPjWuheiYrimhPNetprcnffMxQX+a46zeH4g//AwO6M6iNllcjMfo6A==");
-// echo $config["admin_email"];
+function encryptData($str)
+{
+    $config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/_env.json", true), true);
+    $key = $config["INSTALL_KEY"];
+    $pass1 = openssl_encrypt($str, "AES-128-ECB", $key);
+    $pass2 = utf8_encode($pass1);
+    $pass3 = base64_encode($pass2);
+    return $pass3;
+}
+function decryptData($str)
+{
+    $config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/_env.json", true), true);
+    $key = $config["INSTALL_KEY"];
+    $pass3 = base64_decode($str);
+    $pass2 = utf8_decode($pass3);
+    $pass1 = openssl_decrypt($pass2, "AES-128-ECB", $key);
+    return $pass1;
+}
+?>

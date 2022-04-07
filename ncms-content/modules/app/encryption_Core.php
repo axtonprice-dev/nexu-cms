@@ -1,42 +1,20 @@
 <?php
-function str_encryptaesgcm($plaintext, $password, $encoding = null)
+function encryptData($str)
 {
-    if ($plaintext != null && $password != null) {
-        $keysalt = openssl_random_pseudo_bytes(16);
-        $key = hash_pbkdf2("sha512", $password, $keysalt, 20000, 32, true);
-        $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length("aes-256-gcm"));
-        $tag = "";
-        $encryptedstring = openssl_encrypt($plaintext, "aes-256-gcm", $key, OPENSSL_RAW_DATA, $iv, $tag, "", 16);
-        return $encoding == "hex" ? bin2hex($keysalt . $iv . $encryptedstring . $tag) : ($encoding == "base64" ? base64_encode($keysalt . $iv . $encryptedstring . $tag) : $keysalt . $iv . $encryptedstring . $tag);
-    }
+    $config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/_env.json", true), true);
+    $key = $config["INSTALL_KEY"];
+    $pass1 = openssl_encrypt($str, "AES-128-ECB", $key);
+    $pass2 = utf8_encode($pass1);
+    $pass3 = base64_encode($pass2);
+    return $pass3;
 }
-function str_decryptaesgcm($encryptedstring, $password, $encoding = null)
+function decryptData($str)
 {
-    if ($encryptedstring != null && $password != null) {
-        $encryptedstring = $encoding == "hex" ? hex2bin($encryptedstring) : ($encoding == "base64" ? base64_decode($encryptedstring) : $encryptedstring);
-        $keysalt = substr($encryptedstring, 0, 16);
-        $key = hash_pbkdf2("sha512", $password, $keysalt, 20000, 32, true);
-        $ivlength = openssl_cipher_iv_length("aes-256-gcm");
-        $iv = substr($encryptedstring, 16, $ivlength);
-        $tag = substr($encryptedstring, -16);
-        if(openssl_decrypt(substr($encryptedstring, 16 + $ivlength, -16), "aes-256-gcm", $key, OPENSSL_RAW_DATA, $iv, $tag) == "") {
-            return openssl_decrypt(substr($encryptedstring, 16 + $ivlength, -16), "aes-256-gcm", $key, OPENSSL_RAW_DATA, $iv, $tag);
-        } else{
-            return "[Token Mismatch?]";
-        }
-    }
+    $config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/_env.json", true), true);
+    $key = $config["INSTALL_KEY"];
+    $pass3 = base64_decode($str);
+    $pass2 = utf8_decode($pass3);
+    $pass1 = openssl_decrypt($pass2, "AES-128-ECB", $key);
+    return $pass1;
 }
-function encryptData($data)
-{
-    $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/_env.json", true), true);
-    return str_encryptaesgcm($data, $json["INSTALL_KEY"], "base64");
-}
-function decryptData($data)
-{
-    $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/_env.json", true), true);
-    return str_decryptaesgcm($data, $json["INSTALL_KEY"], "base64");
-}
-
-// file_put_contents("file.json", "{\"test\":\"" . encryptData("test") . "\"}");
-// echo decryptData("NOxMvrAYKDu0a03p7TWTrwdfyH3fOUZvzGmxbdfPk5IjGtZowAII6Ib06pLragOF");
 ?>

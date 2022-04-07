@@ -44,7 +44,7 @@ file_put_contents("../../ncms-storage/configuration/site_settings.json", json_en
 
 /* Start Update ENV File Install State */
 $newEnv = '{ "INSTALL_KEY": "' . $json["INSTALL_KEY"] . '","INSTALL_STATE": true }';
-file_put_contents("../../_env.json", $newEnv);
+// file_put_contents("../../_env.json", $newEnv);
 /* End Update ENV File Install State */
 
 /* Start Create ENV backup */

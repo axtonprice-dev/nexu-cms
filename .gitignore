@@ -4,3 +4,5 @@ Thumbs.db
 /versions/*
 /ncms-content/modules/app/database.php
 /ncms-storage/configuration/*
+LICENSE
+README.md
