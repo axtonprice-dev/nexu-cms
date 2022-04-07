@@ -11,6 +11,7 @@ require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/encryption_Core.p
 $env = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/.env", true), true);
 $config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/site_config.json", true), true);
 $settings = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/site_settings.json", true), true);
+$db = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/database_config.json", true), true);
 
 // User variable translations
 $settings = str_replace("%site_name%", $config["site_name"], $settings);

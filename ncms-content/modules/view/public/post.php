@@ -45,11 +45,11 @@
 			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
 				<!-- Begin Menu -->
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="./"><?= $settings["nav_stories_text"] ?> <span class="sr-only">(current)</span></a>
-					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="post"><?= $settings["nav_post_text"] ?></a>
+						<a class="nav-link" href="./"><?= $settings["nav_stories_text"] ?></a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="post"><?= $settings["nav_post_text"] ?> <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="author"><?= $settings["nav_author_text"] ?></a>
