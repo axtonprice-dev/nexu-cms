@@ -16,41 +16,32 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Vendor CSS-->
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <link href="../../ncms-content/assets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="../../ncms-content/assets/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="css/main.css" rel="stylesheet" media="all">
+    <link href="../../ncms-content/assets/css/main.css" rel="stylesheet" media="all">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
 <?php
-if (
-    isset($_GET['submit']) &&
-    isset($_POST['site_name']) &&
-    isset($_POST['site_description']) &&
-    isset($_POST['adminacc_username']) &&
-    isset($_POST['adminacc_email']) &&
-    isset($_POST['adminacc_password'])
-) {
-    require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/databaseTraffic.php");
+if (isset($_GET['submit']) && isset($_POST['site_name']) && isset($_POST['site_description']) && isset($_POST['adminacc_username']) && isset($_POST['adminacc_email']) && isset($_POST['adminacc_password'])) {
+    require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/configuration_Functions.php");
     require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/encryption_Core.php");
     $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/database_config.json", true), true);
-
-    updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "site_name", $_POST["site_name"]);
-    updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "site_description", $_POST["site_name"]);
-    updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "site_email", encryptData($_POST["site_name"]));
-    updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "site_keywords", $_POST["site_keywords"]);
-    updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "site_language", "en-US");
-    updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "admin_email", encryptData($_POST["adminacc_email"]));
-    updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "admin_username", encryptData($_POST["adminacc_username"]));
-    updateConfiguration(decryptData($json["hostname"]), decryptData($json["username"]), decryptData($json["password"]), decryptData($json["database"]), decryptData($json["prefix"]), "admin_password", encryptData($_POST["adminacc_password"]));
-
+    updateConfiguration("site_name", $_POST["site_name"]);
+    updateConfiguration("site_description", $_POST["site_name"]);
+    updateConfiguration("site_email", encryptData($_POST["site_name"]));
+    updateConfiguration("site_keywords", $_POST["site_keywords"]);
+    updateConfiguration("site_language", "en-US");
+    updateConfiguration("admin_email", encryptData($_POST["adminacc_email"]));
+    updateConfiguration("admin_username", encryptData($_POST["adminacc_username"]));
+    updateConfiguration("admin_password", encryptData($_POST["adminacc_password"]));
     $currentJson = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "_env.json");
     $currentJson = json_decode($currentJson, true);
     $newJson["INSTALL_STATE"] = true;
     $newJson = json_encode($newJson);
-    file_put_contents($_SERVER['DOCUMENT_ROOT'] . "_env.json", $newJson);
+    file_put_contents("../../../", $newJson);
     header("Location: ./");
 }
 ?>

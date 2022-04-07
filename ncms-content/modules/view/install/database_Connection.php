@@ -16,11 +16,11 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Vendor CSS-->
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <link href="../../ncms-content/assets/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="../../ncms-content/assets/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="css/main.css" rel="stylesheet" media="all">
+    <link href="../../ncms-content/assets/css/main.css" rel="stylesheet" media="all">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
@@ -53,15 +53,13 @@
                             </script>
                     <?php
                         } else {
-                            require("../../ncms-content/modules/app/databaseTraffic.php");
-                            require("../../ncms-content/modules/app/miscellaneous.php");
+                            require("../../ncms-content/modules/app/configuration_Functions.php");
                             require("../../ncms-content/modules/app/encryption_Core.php");
-                            createConfigTable($_POST["hostname"], $_POST["username"], $_POST["password"], $_POST["database"], $_POST["tableprefix"],);
-                            updateConfiguration($_POST["hostname"], $_POST["username"], $_POST["password"], $_POST["database"], $_POST["tableprefix"], "site_url", $_SERVER["HTTP_HOST"]);
-                            updateConfiguration($_POST["hostname"], $_POST["username"], $_POST["password"], $_POST["database"], $_POST["tableprefix"], "site_language", "en-US");
-                            updateConfiguration($_POST["hostname"], $_POST["username"], $_POST["password"], $_POST["database"], $_POST["tableprefix"], "admin_email", encryptData("demo@example.com"));
-                            updateConfiguration($_POST["hostname"], $_POST["username"], $_POST["password"], $_POST["database"], $_POST["tableprefix"], "admin_username", encryptData("admin"));
-                            updateConfiguration($_POST["hostname"], $_POST["username"], $_POST["password"], $_POST["database"], $_POST["tableprefix"], "admin_password", encryptData("password"));
+                            updateConfiguration("site_url", $_SERVER["HTTP_HOST"]);
+                            updateConfiguration("site_language", "en-US");
+                            updateConfiguration("admin_email", encryptData("demo@example.com"));
+                            updateConfiguration("admin_username", encryptData("admin"));
+                            updateConfiguration("admin_password", encryptData("password"));
                             storeDatabaseConnection(encryptData($_POST["hostname"]), encryptData($_POST["username"]), encryptData($_POST["password"]), encryptData($_POST["database"]), encryptData($_POST["tableprefix"]));
                             header("Location: ?pg=2");
                         }

@@ -29,8 +29,4 @@ require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/compose_init.php"
         }
     }
     ?>
-
-    <script>
-        window.history.pushState("", "", 'index.php');
-    </script>
 </body>

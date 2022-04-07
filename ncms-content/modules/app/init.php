@@ -19,8 +19,7 @@ function initCheckStartup()
         touch($envFile);
     }
     $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/_env.json", true), true);
-    if ($json["INSTALL_STATE"] == false || filesize($envFile) == 0) {
-        $envContents = "INSTALL_KEY=" . $encryptionKey . " \n PRE_INIT_STATE=true \n INSTALL_STATE=false\n ";
+    if (filesize($envFile) == 0 || $json["INSTALL_STATE"] === false) {
         $envContents = json_encode('{ "INSTALL_KEY": "' . $encryptionKey . '","INSTALL_STATE": false }', JSON_PRETTY_PRINT);
         file_put_contents($envFile, json_decode($envContents, JSON_PRETTY_PRINT));
         header("Location: ./ncms-system/install/");
@@ -57,5 +56,4 @@ function initCheckDatabase()
     while ($row = $result->fetch_array()) {
         echo '';
     }
-    
 }
