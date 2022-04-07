@@ -9,7 +9,7 @@
   </a>
 </p>
 
-<img src="https://user-images.githubusercontent.com/37771600/162176354-ada7adfd-b53a-4260-8565-15c1ce48d300.png" height="300">
+<img src="https://user-images.githubusercontent.com/37771600/162176354-ada7adfd-b53a-4260-8565-15c1ce48d300.png" height="350">
 
 > The ultimate PHP powered CMS for creating your perfect website or blog forum!
 
