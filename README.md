@@ -9,7 +9,7 @@
   </a>
 </p>
 
-<img src="https://cdn.discordapp.com/attachments/765690365256007692/960321540090646578/239fea25-33fb-4436-a8ce-5726d8f3e7ca.png" height="350">
+![nexucms-banner](https://user-images.githubusercontent.com/37771600/162176354-ada7adfd-b53a-4260-8565-15c1ce48d300.png)
 
 > The ultimate PHP powered CMS for creating your perfect website or blog forum!
 
