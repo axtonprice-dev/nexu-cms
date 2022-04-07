@@ -209,11 +209,6 @@
             margin-bottom: 16px;
         }
 
-
-        .full-torradeira {}
-
-        .torradeira {}
-
         .pao-atras {
             animation: leftright 1s alternate infinite;
             transform-origin: center;
