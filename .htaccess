@@ -1,3 +1,12 @@
-ErrorDocument 404 https://nexucms.intrevise.co.uk/ncms-system/error/?error=404
-ErrorDocument 500 https://nexucms.intrevise.co.uk/ncms-system/error/?error=500
-ErrorDocument 403 https://nexucms.intrevise.co.uk/ncms-system/error/?error=403
+ErrorDocument 404 /ncms-system/error/index?error=404
+ErrorDocument 500 /ncms-system/error/index?error=500
+ErrorDocument 403 /ncms-system/error/index?error=403
+
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html

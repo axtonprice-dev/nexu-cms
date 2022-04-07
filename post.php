@@ -1,9 +1,4 @@
 <?php
-$_SERVER["HTTP_CF_CONNECTING_IP"] = "86.2.10.33";
-if ($_SERVER["HTTP_CF_CONNECTING_IP"] != "86.2.10.33") {
-    die("Quit looking at my discord status!");
-}
-
 require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/init.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/compose_init.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/encryption_Core.php");
@@ -28,4 +23,5 @@ $settings = str_replace("%admin_email%", $config["admin_email"], $settings);
 $settings = str_replace("%admin_username%", $config["admin_username"], $settings);
 $settings = str_replace("%site_url%", $config["site_url"], $settings);
 
-require("ncms-content/modules/view/public/index.php");
+require("ncms-content/modules/view/public/post.php");
+?>

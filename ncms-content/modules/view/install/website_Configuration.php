@@ -30,7 +30,7 @@ if (isset($_GET['submit']) && isset($_POST['site_name']) && isset($_POST['site_d
     require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/encryption_Core.php");
     $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/database_config.json", true), true);
     updateConfiguration("site_name", $_POST["site_name"]);
-    updateConfiguration("site_description", $_POST["site_name"]);
+    updateConfiguration("site_description", $_POST["site_description"]);
     updateConfiguration("site_email", encryptData($_POST["site_name"]));
     updateConfiguration("site_keywords", $_POST["site_keywords"]);
     updateConfiguration("site_language", "en-US");
@@ -42,7 +42,7 @@ if (isset($_GET['submit']) && isset($_POST['site_name']) && isset($_POST['site_d
     $newJson["INSTALL_STATE"] = true;
     $newJson = json_encode($newJson);
     file_put_contents("../../../", $newJson);
-    header("Location: ./");
+    header("Location: ?pg=3");
 }
 ?>
 

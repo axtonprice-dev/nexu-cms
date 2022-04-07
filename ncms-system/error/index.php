@@ -3,12 +3,12 @@ require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/init.php");
 require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/compose_init.php");
 ?>
 
-<body>
+
 
     <?php
     $error = $_GET["error"];
     if (!$error) {
-        header("Location: /index.php");
+        header("Location: ./");
     }
 
     if ($error == "404") {
@@ -22,11 +22,5 @@ require($_SERVER['DOCUMENT_ROOT'] . "/ncms-content/modules/app/compose_init.php"
     }
     if ($error == "install_key_invalid") {
         echo "<h1>Invalid installation key!</h1>";
-        $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/_env.json", true), true);
-        if ($json["INSTALL_KEY"] != "") {
-            header("Location: ./");
-            exit;
-        }
     }
     ?>
-</body>

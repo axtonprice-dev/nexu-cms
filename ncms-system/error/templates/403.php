@@ -1,118 +1,114 @@
 <head>
     <title>403 Error</title>
+    <link rel="icon" type="image/x-icon" href="../../ncms-content/assets/img/favicon.png">
+    <meta name="description" content="Access to this page is restricted. Please check with the site admin if you believe this is a mistake."> <!-- ˜150 chars -->
+    <meta property="og:title" content="403 Error">
+    <meta property="og:description" content="Access to this page is restricted. Please check with the site admin if you believe this is a mistake."> <!-- ˜300 chars -->
 </head>
 
-<body>
-    <div class="container">
-        <div class="error">
-            <h1>403</h1>
-            <h2>error</h2>
-            <p>You do not have permission to access this page. If you think this is an error, please <a href="https://discord.gg/dP3MuBATGc">let us know</a> so we can fix it!</p>
-        </div>
-        <div class="stack-container">
-            <div class="card-container">
-                <div class="perspec" style="--spreaddist: 125px; --scaledist: .75; --vertdist: -25px;">
-                    <div class="card">
-                        <div class="writing">
-                            <div class="topbar">
-                                <div class="red"></div>
-                                <div class="yellow"></div>
-                                <div class="green"></div>
-                            </div>
-                            <div class="code">
-                                <ul>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="perspec" style="--spreaddist: 100px; --scaledist: .8; --vertdist: -20px;">
-                    <div class="card">
-                        <div class="writing">
-                            <div class="topbar">
-                                <div class="red"></div>
-                                <div class="yellow"></div>
-                                <div class="green"></div>
-                            </div>
-                            <div class="code">
-                                <ul>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="perspec" style="--spreaddist:75px; --scaledist: .85; --vertdist: -15px;">
-                    <div class="card">
-                        <div class="writing">
-                            <div class="topbar">
-                                <div class="red"></div>
-                                <div class="yellow"></div>
-                                <div class="green"></div>
-                            </div>
-                            <div class="code">
-                                <ul>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="perspec" style="--spreaddist: 50px; --scaledist: .9; --vertdist: -10px;">
-                    <div class="card">
-                        <div class="writing">
-                            <div class="topbar">
-                                <div class="red"></div>
-                                <div class="yellow"></div>
-                                <div class="green"></div>
-                            </div>
-                            <div class="code">
-                                <ul>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="perspec" style="--spreaddist: 25px; --scaledist: .95; --vertdist: -5px;">
-                    <div class="card">
-                        <div class="writing">
-                            <div class="topbar">
-                                <div class="red"></div>
-                                <div class="yellow"></div>
-                                <div class="green"></div>
-                            </div>
-                            <div class="code">
-                                <ul>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="perspec" style="--spreaddist: 0px; --scaledist: 1; --vertdist: 0px;">
-                    <div class="card">
-                        <div class="writing">
-                            <div class="topbar">
-                                <div class="red"></div>
-                                <div class="yellow"></div>
-                                <div class="green"></div>
-                            </div>
-                            <div class="code">
-                                <ul>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
+<body>
+    <div class="lock"></div>
+    <div class="message">
+        <h1>Access to this page is restricted</h1>
+        <p>Please check with the site admin if you believe this is a mistake.</p>
     </div>
 </body>
+
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Lato");
+
+    * {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Lato", sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h1 {
+        margin: 40px 0 20px;
+    }
+
+    .lock {
+        border-radius: 5px;
+        width: 55px;
+        height: 45px;
+        background-color: #333;
+        animation: dip 1s;
+        animation-delay: 1.5s;
+    }
+
+    .lock::before,
+    .lock::after {
+        content: "";
+        position: absolute;
+        border-left: 5px solid #333;
+        height: 20px;
+        width: 15px;
+        left: calc(50% - 12.5px);
+    }
+
+    .lock::before {
+        top: -30px;
+        border: 5px solid #333;
+        border-bottom-color: transparent;
+        border-radius: 15px 15px 0 0;
+        height: 30px;
+        animation: lock 2s, spin 2s;
+    }
+
+    .lock::after {
+        top: -10px;
+        border-right: 5px solid transparent;
+        animation: spin 2s;
+    }
+
+    @keyframes lock {
+        0% {
+            top: -45px;
+        }
+
+        65% {
+            top: -45px;
+        }
+
+        100% {
+            top: -30px;
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: scaleX(-1);
+            left: calc(50% - 30px);
+        }
+
+        65% {
+            transform: scaleX(1);
+            left: calc(50% - 12.5px);
+        }
+    }
+
+    @keyframes dip {
+        0% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(10px);
+        }
+
+        100% {
+            transform: translateY(0px);
+        }
+    }
+</style>

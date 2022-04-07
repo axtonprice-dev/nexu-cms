@@ -41,19 +41,19 @@ function initCheckDatabase()
     // check database tables presence
     // check config in config table  
 
-    $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/database_config.json", true), true);
-    $conn = mysqli_connect($json["hostname"], $json["username"], $json["password"], $json["database"]);
-    $configTable = $json["prefix"] . "configuration";
+    // $json = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/database_config.json", true), true);
+    // $conn = mysqli_connect($json["hostname"], $json["username"], $json["password"], $json["database"]);
+    // $configTable = $json["prefix"] . "configuration";
 
-    $mysqli = new mysqli($json["hostname"], $json["username"], $json["password"], $json["database"]);
-    if ($mysqli->connect_errno) {
-        die("Connect failed: " . $mysqli->connect_error);
-    }
+    // $mysqli = new mysqli($json["hostname"], $json["username"], $json["password"], $json["database"]);
+    // if ($mysqli->connect_errno) {
+    //     die("Connect failed: " . $mysqli->connect_error);
+    // }
 
-    $query = "SELECT * FROM `$configTable`";
-    $result = $mysqli->query($query);
+    // $query = "SELECT * FROM `$configTable`";
+    // $result = $mysqli->query($query);
 
-    while ($row = $result->fetch_array()) {
-        echo '';
-    }
+    // while ($row = $result->fetch_array()) {
+    //     echo '';
+    // }
 }
