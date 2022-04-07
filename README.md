@@ -19,6 +19,7 @@
 Nexu is a completely free and open source software designed to allow users to create and customise their own website or blog within minutes; no more complicated interfaces and overpriced services with over-the-top features, simply design the website of your dreams with ease.
 
 ## Screenshots
+![image](https://user-images.githubusercontent.com/37771600/162171033-6c7b9a42-7264-4e79-9ce9-a9d73d48b8e3.png)
 ![image](https://user-images.githubusercontent.com/37771600/162170215-6a5abb0e-f049-479f-abc1-1b616812b4d2.png)
 ![image](https://user-images.githubusercontent.com/37771600/162170291-23faa344-98f9-431e-99fe-0e23a5a5e368.png)
 ![image](https://user-images.githubusercontent.com/37771600/162170564-7c84cc17-7b7a-4e10-9ae5-7265aad85f00.png)
