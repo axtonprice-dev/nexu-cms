@@ -15,7 +15,7 @@
 	<meta property="og:locale" content="<?= $config["site_language"] ?>">
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="<?= $_SERVER["HTTP_HOST"] ?>">
-	<meta property="og:image" content="http://www.sfidastudios.com/logo.png"> <!-- 200x200px - 1200x1200px -->
+	<meta property="og:image" content="./ncms-storage/configuration/site-logo.png"> <!-- 200x200px - 1200x1200px -->
 
 	<!-- Bootstrap core CSS -->
 	<link href="./ncms-content/assets/css/bootstrap.min.css" rel="stylesheet">
