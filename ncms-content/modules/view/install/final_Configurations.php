@@ -66,6 +66,11 @@ if (!is_dir("../../ncms-storage/user/")) {
     file_put_contents("../../ncms-storage/backups/.htaccess", $htaccess);
 }
 /* End Htaccess and User Dir */
+
+/* Start setup Database */
+$config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/database_config.json", true), true);
+setupDatabase(decryptData($config["hostname"]), decryptData($config["username"]), decryptData($config["password"]), decryptData($config["database"]), decryptData($config["prefix"]));
+/* End setup Database */
 ?>
 
 <body>
