@@ -3,6 +3,6 @@ Thumbs.db
 /design/*
 /versions/*
 /ncms-content/modules/app/database.php
-/ncms-storage/configuration/*
+/ncms-storage/*
 LICENSE
 README.md
