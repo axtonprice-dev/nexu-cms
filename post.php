@@ -24,5 +24,19 @@ $settings = str_replace("%admin_email%", $config["admin_email"], $settings);
 $settings = str_replace("%admin_username%", $config["admin_username"], $settings);
 $settings = str_replace("%site_url%", $config["site_url"], $settings);
 
+// Functions 
+function determineReadTime($content)
+{
+    $words = str_word_count(strip_tags($content));
+    $minutes = floor($words / 200);
+    $seconds = floor($words % 200 / (200 / 60));
+    $minutes = intval($minutes);
+    if ($minutes == 0) {
+        return $seconds . " sec";
+    } else {
+        return $minutes . " min ";
+    }
+}
+
 require("ncms-content/modules/view/public/post.php");
 ?>
