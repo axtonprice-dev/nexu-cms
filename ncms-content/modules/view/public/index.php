@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
-	<link rel="icon" href="./ncms-content/assets/img/favicon.png">
+	<link rel="icon" href="./ncms-storage/configuration/site-logo.png">
 
 	<title><?= $config["site_name"] ?> | <?= $config["site_description"] ?></title>
 	<meta name="author" content="<?= $config["site_email"] ?>">
@@ -49,7 +49,7 @@
 						<a class="nav-link" href="./"><?= $settings["nav_stories_text"] ?> <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="post"><?= $settings["nav_post_text"] ?></a>
+						<a class="nav-link" href="./#posts"><?= $settings["nav_post_text"] ?></a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="author"><?= $settings["nav_author_text"] ?></a>
@@ -93,7 +93,7 @@
 				$con = mysqli_connect(decryptData($db["hostname"]), decryptData($db["username"]), decryptData($db["password"]), decryptData($db["database"]));
 
 				$table = decryptData($db["prefix"]) . "posts";
-				$query = "SELECT * FROM $table";
+				$query = "SELECT * FROM $table ORDER BY post_id DESC LIMIT 2";
 				$results = mysqli_query($con, $query);
 				$row_count = mysqli_num_rows($results);
 
@@ -104,25 +104,25 @@
 					<div class="card">
 						<div class="row">
 							<div class="col-md-5 wrapthumbnail">
-								<a href="post">
-									<div class="thumbnail" style="background-image:url('./ncms-content/assets/img/demopic/1.jpg');">
+								<a href="post?t=<?= $row["post_title"] ?>">
+									<div class="thumbnail" style="background-image:url('./ncms-content/assets/img/posts/portrait/<?= $row["post_img_portrait"] ?>');">
 									</div>
 								</a>
 							</div>
 							<div class="col-md-7">
 								<div class="card-block">
-									<h2 class="card-title"><a href="post"><?= $row["post_title"] ?></a></h2>
+									<h2 class="card-title"><a href="post?t=<?= $row["post_title"] ?>"><?= $row["post_title"] ?></a></h2>
 									<h4 class="card-text"><?= $row["post_teaser"] ?></h4>
 									<div class="metafooter">
 										<div class="wrapfooter">
 											<span class="meta-footer-thumb">
-												<a href="author"><img class="author-thumb" src="<?= "https://www.gravatar.com/avatar/" . md5(strtolower(trim($config["admin_email"]))) . "?s=100&d=https://cdn.axtonprice.com/img/aNmcNLNdRY.png" ?>" alt="<?= ucfirst(decryptData($config["admin_username"])) ?>"></a>
+												<a href="author"><img class="author-thumb" src="<?= "https://www.gravatar.com/avatar/" . md5(strtolower(trim(crossReferenceFetch($tablePrefix . "users", "email", "user_id", $row["author_id"])))) . "?s=100&d=https://cdn.axtonprice.com/img/aNmcNLNdRY.png" ?>" alt="<?= ucfirst(decryptData(crossReferenceFetch($tablePrefix . "users", "username", "user_id", $row["author_id"]))) ?>"></a>
 											</span>
 											<span class="author-meta">
-												<span class="post-name"><a href="author"><?= ucfirst(decryptData($config["admin_username"])) ?></a></span><br />
+												<span class="post-name"><a href="author"><?= ucfirst(crossReferenceFetch($tablePrefix . "users", "username", "user_id", $row["author_id"])) ?></a></span><br />
 												<span class="post-date"><?= date('j M Y', strtotime($row["post_date"])); ?></span><span class="dot"></span><span class="post-read"><?= determineReadTime($row["post_description"]) ?> read</span>
 											</span>
-											<span class="post-read-more"><a href="post" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
+											<span class="post-read-more"><a href="post?t=<?= $row["post_id"] ?>" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
 														<path d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z" fill-rule="evenodd"></path>
 													</svg></a></span>
 										</div>
@@ -131,8 +131,13 @@
 							</div>
 						</div>
 					</div>
+					<!-- Post Divider -->
+					<div></div>
+					<!-- End post Divider -->
+
 					<!-- end post -->
 				<?php
+
 				}
 
 				mysqli_query($con, $query);
@@ -146,7 +151,7 @@
 		<!-- Begin List Posts -->
 		<section class="recent-posts">
 			<div class="section-title">
-				<h2><span><?= $settings["index_all_stores_tab_text"] ?></span></h2>
+				<h2 id="posts"><span><?= $settings["index_all_stories_tab_text"] ?></span></h2>
 			</div>
 			<div class="card-columns listrecent">
 
@@ -157,34 +162,41 @@
 				$query = "SELECT * FROM $table";
 				$results = mysqli_query($con, $query);
 				$row_count = mysqli_num_rows($results);
+				$counter = 0;
 
 				while ($row = mysqli_fetch_array($results)) {
 					$key = $row["post_id"];
 				?>
 					<!-- begin post -->
 					<div class="card">
-						<a href="post">
-							<img class="img-fluid" src="./ncms-content/assets/img/demopic/5.jpg" alt="">
+						<a href="post?t=<?= $row["post_title"] ?>">
+							<img class="img-fluid" src="./ncms-content/assets/img/posts/landscape/<?= $row["post_img_landscape"] ?>" alt="">
 						</a>
 						<div class="card-block">
-							<h2 class="card-title"><a href="post"><?= $row["post_title"] ?></a>
+							<h2 class="card-title"><a href="post?t=<?= $row["post_title"] ?>"><?= $row["post_title"] ?></a>
 							</h2>
-							<h4 class="card-text"><?= $row["post_teaser"] ?></h4>
+							<div class="no-overflow">
+								<h4 class="card-text overflow-ellipsis"><?= $row["post_teaser"]; ?></h4>
+							</div>
+							<hr>
 							<div class="metafooter">
 								<div class="wrapfooter">
 									<span class="meta-footer-thumb">
-										<a href="author"><img class="author-thumb" src="<?= "https://www.gravatar.com/avatar/" . md5(strtolower(trim($config["admin_email"]))) . "?s=100&d=https://cdn.axtonprice.com/img/aNmcNLNdRY.png" ?>" alt="<?= ucfirst(decryptData($config["admin_username"])) ?>"></a>
+										<a href="author"><img class="author-thumb" src="<?= "https://www.gravatar.com/avatar/" . md5(strtolower(trim(crossReferenceFetch($tablePrefix . "users", "email", "user_id", $row["author_id"])))) . "?s=100&d=https://cdn.axtonprice.com/img/aNmcNLNdRY.png" ?>" alt="<?= ucfirst(crossReferenceFetch($tablePrefix . "users", "username", "user_id", $row["author_id"])) ?>"></a>
 									</span>
 									<span class="author-meta">
-										<span class="post-name"><a href="author"><?= ucfirst(decryptData($config["admin_username"])) ?></a></span><br />
+										<span class="post-name"><a href="author"><?= ucfirst(crossReferenceFetch($tablePrefix . "users", "username", "user_id", $row["author_id"])) ?></a></span><br />
 										<span class="post-date"><?= date('j M Y', strtotime($row["post_date"])); ?></span><span class="dot"></span><span class="post-read"><?= determineReadTime($row["post_description"]) ?> read</span>
 									</span>
-									<span class="post-read-more"><a href="post" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
+									<span class="post-read-more"><a href="post?t=<?= $row["post_title"] ?>" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
 												<path d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z" fill-rule="evenodd"></path>
 											</svg></a></span>
 								</div>
 							</div>
 						</div>
+					</div>
+
+					<div class="clearfix">
 					</div>
 					<!-- end post -->
 				<?php

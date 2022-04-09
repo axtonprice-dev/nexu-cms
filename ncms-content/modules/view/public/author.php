@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
-	<link rel="icon" href="./ncms-content/assets/img/favicon.png">
+	<link rel="icon" href="./ncms-storage/configuration/site-logo.png">
 
 	<title><?= $config["site_name"] ?> | <?= $config["site_description"] ?></title>
 	<meta name="author" content="<?= $config["site_email"] ?>">
@@ -49,7 +49,7 @@
 						<a class="nav-link" href="./"><?= $settings["nav_stories_text"] ?></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="post"><?= $settings["nav_post_text"] ?></a>
+						<a class="nav-link" href="./#posts"><?= $settings["nav_post_text"] ?></a>
 					</li>
 					<li class="nav-item active">
 						<a class="nav-link" href="author"><?= $settings["nav_author_text"] ?> <span class="sr-only">(current)</span></a>
@@ -108,7 +108,7 @@
 								<img class="img-fluid img-thumb" src="./ncms-content/assets/img/demopic/8.jpg" alt="">
 							</a>
 							<div class="card-block">
-								<h2 class="card-title"><a href="post">Life is worth living forever and ever</a></h2>
+								<h2 class="card-title"><a href="./#posts">Life is worth living forever and ever</a></h2>
 								<h4 class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</h4>
 								<div class="metafooter">
 									<div class="wrapfooter">
@@ -119,7 +119,7 @@
 											<span class="post-name"><a href="author">Sal</a></span><br />
 											<span class="post-date">22 July 2017</span><span class="dot"></span><span class="post-read">6 min read</span>
 										</span>
-										<span class="post-read-more"><a href="post" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
+										<span class="post-read-more"><a href="./#posts" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
 													<path d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z" fill-rule="evenodd"></path>
 												</svg></a></span>
 									</div>
@@ -136,7 +136,7 @@
 								<img class="img-fluid img-thumb" src="./ncms-content/assets/img/demopic/10.jpg" alt="">
 							</a>
 							<div class="card-block">
-								<h2 class="card-title"><a href="post">Best European capitals to visit and the costs implied</a></h2>
+								<h2 class="card-title"><a href="./#posts">Best European capitals to visit and the costs implied</a></h2>
 								<h4 class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</h4>
 								<div class="metafooter">
 									<div class="wrapfooter">
@@ -147,7 +147,7 @@
 											<span class="post-name"><a href="author">Sal</a></span><br />
 											<span class="post-date">22 July 2017</span><span class="dot"></span><span class="post-read">6 min read</span>
 										</span>
-										<span class="post-read-more"><a href="post" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
+										<span class="post-read-more"><a href="./#posts" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
 													<path d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z" fill-rule="evenodd"></path>
 												</svg></a></span>
 									</div>
@@ -164,7 +164,7 @@
 								<img class="img-fluid img-thumb" src="./ncms-content/assets/img/demopic/9.jpg" alt="">
 							</a>
 							<div class="card-block">
-								<h2 class="card-title"><a href="post">10 Things you should learn before visiting</a></h2>
+								<h2 class="card-title"><a href="./#posts">10 Things you should learn before visiting</a></h2>
 								<h4 class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</h4>
 								<div class="metafooter">
 									<div class="wrapfooter">
@@ -175,7 +175,7 @@
 											<span class="post-name"><a href="author">Sal</a></span><br />
 											<span class="post-date">22 July 2017</span><span class="dot"></span><span class="post-read">6 min read</span>
 										</span>
-										<span class="post-read-more"><a href="post" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
+										<span class="post-read-more"><a href="./#posts" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
 													<path d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z" fill-rule="evenodd"></path>
 												</svg></a></span>
 									</div>

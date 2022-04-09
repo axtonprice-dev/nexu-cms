@@ -50,7 +50,7 @@ function setupDatabase($servername, $username, $password, $database, $prefix)
     mysqli_query($conn, "INSERT INTO `$tableUsers` (`username`, `email`, `password`, `firstname`, `lastname`, `is_admin`, `is_editor`) VALUES ('$userUsername', '$userEmail', '$userPassword', 'Admin', '', '1', '0');");
     mysqli_query($conn, "ALTER TABLE `$tableUsers` AUTO_INCREMENT = 1");
 
-    mysqli_query($conn, "CREATE TABLE `$tablePosts` (`post_id` int(11) NOT NULL,`author_id` varchar(50) NOT NULL,`post_date` timestamp(5) NOT NULL DEFAULT current_timestamp(5),`post_title` varchar(100) NOT NULL,`post_description` varchar(100) NOT NULL,`post_tags` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`post_tags`))) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
+    mysqli_query($conn, "CREATE TABLE `$tablePosts` (`post_id` int(11) NOT NULL,`author_id` varchar(50) NOT NULL,`post_date` timestamp(5) NOT NULL DEFAULT current_timestamp(5),`post_title` varchar(100) NOT NULL,`post_teaser` varchar(100) NOT NULL,`post_description` varchar(1000) NOT NULL,`post_tags` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,`post_img_landscape` varchar(100) NOT NULL,`post_img_portrait` varchar(100) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8;");
     mysqli_query($conn, "ALTER TABLE `$tablePosts` ADD PRIMARY KEY (`post_id`);");
     mysqli_query($conn, "ALTER TABLE `$tablePosts` MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT;");
     mysqli_query($conn, "COMMIT;");
@@ -90,4 +90,22 @@ function setupDatabase($servername, $username, $password, $database, $prefix)
     Site Updated <- Non Specific
 
     */
+}
+
+function createNewUser($userEmail, $userUsername, $userPassword)
+{
+    $config = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/ncms-storage/configuration/site_config.json", true), true);
+    $servername = $config["database_host"];
+    $username = $config["database_username"];
+    $password = $config["database_password"];
+    $database = $config["database_name"];
+    $prefix = $config["database_prefix"];
+
+    $conn = mysqli_connect($servername, $username, $password, $database);
+    $table = $prefix . "users";
+
+    mysqli_query($conn, "INSERT INTO `$table` (`username`, `email`, `password`, `firstname`, `lastname`, `is_admin`, `is_editor`) VALUES ('$userUsername', '$userEmail', '$userPassword', 'Admin', '', '1', '0');");
+    mysqli_query($conn, "ALTER TABLE `$table` AUTO_INCREMENT = 1");
+
+    mysqli_close($conn);
 }

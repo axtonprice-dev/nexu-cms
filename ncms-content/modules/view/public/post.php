@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
-	<link rel="icon" href="./ncms-content/assets/img/favicon.png">
+	<link rel="icon" href="./ncms-storage/configuration/site-logo.png">
 
 	<title><?= $config["site_name"] ?> | <?= $config["site_description"] ?></title>
 	<meta name="author" content="<?= $config["site_email"] ?>">
@@ -49,7 +49,7 @@
 						<a class="nav-link" href="./"><?= $settings["nav_stories_text"] ?></a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" href="post"><?= $settings["nav_post_text"] ?> <span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="./#posts"><?= $settings["nav_post_text"] ?> <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="author"><?= $settings["nav_author_text"] ?></a>
@@ -128,37 +128,25 @@
 								<a href="author"><img class="author-thumb" src="https://www.gravatar.com/avatar/e56154546cf4be74e393c62d1ae9f9d4?s=250&amp;d=mm&amp;r=x" alt="Sal"></a>
 							</div>
 							<div class="col-md-10">
-								<a class="link-dark" href="author">Sal</a><a href="#" class="btn follow">Follow</a>
-								<span class="author-description">Site administrator, developer</span>
-								<span class="post-date">22 July 2022</span><span class="dot"></span><span class="post-read">6 min read</span>
+								<a class="link-dark" href="author"><?= ucfirst(crossReferenceFetch($tablePrefix . "users", "username", "user_id", crossReferenceFetch($tablePrefix . "posts", "author_id", "post_title", $post))) ?></a>
+								<?php if (crossReferenceFetch($tablePrefix . "users", "is_admin", "user_id", crossReferenceFetch($tablePrefix . "posts", "author_id", "post_title", $post)) == "1") echo '<a class="btn follow">Admin</a>'; ?><br>
+								<span class="post-date">Posted on <?= date('j M Y', strtotime(crossReferenceFetch($tablePrefix . "posts", "post_date", "post_title", $post))); ?></span><span class="dot"></span><span class="post-read"><?= determineReadTime(crossReferenceFetch($tablePrefix . "posts", "post_description", "post_title", $post)) ?></span>
 							</div>
 						</div>
 						<!-- End Top Menta -->
 
-						<h1 class="posttitle">18 Things You Should Learn Before Moving Into a New Home</h1>
+						<h1 class="posttitle"><?= crossReferenceFetch($tablePrefix . "posts", "post_title", "post_title", $post) ?></h1>
 
 					</div>
 
 					<!-- Begin Featured Image -->
-					<img class="featured-image img-fluid" src="./ncms-content/assets/img/demopic/10.jpg" alt="">
+					<img class="featured-image img-fluid" src="./ncms-content/assets/img/demopic/10.jpg" alt="<?= crossReferenceFetch($tablePrefix . "posts", "post_title", "post_title", $post) ?>">
 					<!-- End Featured Image -->
 
 					<!-- Begin Post Content -->
 					<div class="article-post">
 						<p>
-							Holy grail funding non-disclosure agreement advisor ramen bootstrapping ecosystem. Beta crowdfunding iteration assets business plan paradigm shift stealth mass market seed money rockstar niche market marketing buzz market.
-						</p>
-						<p>
-							Burn rate release facebook termsheet equity technology. Interaction design rockstar network effects handshake creative startup direct mailing. Technology influencer direct mailing deployment return on investment seed round.
-						</p>
-						<p>
-							Termsheet business model canvas user experience churn rate low hanging fruit backing iteration buyer seed money. Virality release launch party channels validation learning curve paradigm shift hypotheses conversion. Stealth leverage freemium venture startup business-to-business accelerator market.
-						</p>
-						<blockquote>
-							Gen-z strategy long tail churn rate seed money channels user experience incubator startup partner network low hanging fruit direct mailing. Client backing success startup assets responsive web design burn rate A/B testing metrics first mover advantage conversion.
-						</blockquote>
-						<p>
-							Freemium non-disclosure agreement lean startup bootstrapping holy grail ramen MVP iteration accelerator. Strategy market ramen leverage paradigm shift seed round entrepreneur crowdfunding social proof angel investor partner network virality.
+							<?= crossReferenceFetch($tablePrefix . "posts", "post_description", "post_title", $post) ?>
 						</p>
 					</div>
 					<!-- End Post Content -->
@@ -191,11 +179,11 @@
 					<!-- begin post -->
 					<div class="col-md-4">
 						<div class="card">
-							<a href="post">
+							<a href="./#posts">
 								<img class="img-fluid img-thumb" src="./ncms-content/assets/img/demopic/9.jpg" alt="">
 							</a>
 							<div class="card-block">
-								<h2 class="card-title"><a href="post">Best recreational places to visit on a holiday</a></h2>
+								<h2 class="card-title"><a href="./#posts">Best recreational places to visit on a holiday</a></h2>
 								<div class="metafooter">
 									<div class="wrapfooter">
 										<span class="meta-footer-thumb">
@@ -205,7 +193,7 @@
 											<span class="post-name"><a href="author">Sal</a></span><br />
 											<span class="post-date">22 July 2017</span><span class="dot"></span><span class="post-read">6 min read</span>
 										</span>
-										<span class="post-read-more"><a href="post" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
+										<span class="post-read-more"><a href="./#posts" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
 													<path d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z" fill-rule="evenodd"></path>
 												</svg></a></span>
 									</div>
@@ -218,11 +206,11 @@
 					<!-- begin post -->
 					<div class="col-md-4">
 						<div class="card">
-							<a href="post">
+							<a href="./#posts">
 								<img class="img-fluid img-thumb" src="./ncms-content/assets/img/demopic/8.jpg" alt="">
 							</a>
 							<div class="card-block">
-								<h2 class="card-title"><a href="post">How travelling can change your life</a></h2>
+								<h2 class="card-title"><a href="./#posts">How travelling can change your life</a></h2>
 								<div class="metafooter">
 									<div class="wrapfooter">
 										<span class="meta-footer-thumb">
@@ -232,7 +220,7 @@
 											<span class="post-name"><a href="author">Sal</a></span><br />
 											<span class="post-date">22 July 2017</span><span class="dot"></span><span class="post-read">6 min read</span>
 										</span>
-										<span class="post-read-more"><a href="post" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
+										<span class="post-read-more"><a href="./#posts" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
 													<path d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z" fill-rule="evenodd"></path>
 												</svg></a></span>
 									</div>
@@ -245,11 +233,11 @@
 					<!-- begin post -->
 					<div class="col-md-4">
 						<div class="card">
-							<a href="post">
+							<a href="./#posts">
 								<img class="img-fluid img-thumb" src="./ncms-content/assets/img/demopic/7.jpg" alt="">
 							</a>
 							<div class="card-block">
-								<h2 class="card-title"><a href="post">Little red dress and a perfect summer</a></h2>
+								<h2 class="card-title"><a href="./#posts">Little red dress and a perfect summer</a></h2>
 								<div class="metafooter">
 									<div class="wrapfooter">
 										<span class="meta-footer-thumb">
@@ -259,7 +247,7 @@
 											<span class="post-name"><a href="author">Sal</a></span><br />
 											<span class="post-date">22 July 2017</span><span class="dot"></span><span class="post-read">6 min read</span>
 										</span>
-										<span class="post-read-more"><a href="post" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
+										<span class="post-read-more"><a href="./#posts" title="Read Story"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
 													<path d="M19 6c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v14.66h.012c.01.103.045.204.12.285a.5.5 0 0 0 .706.03L12.5 16.85l5.662 4.126a.508.508 0 0 0 .708-.03.5.5 0 0 0 .118-.285H19V6zm-6.838 9.97L7 19.636V6c0-.55.45-1 1-1h9c.55 0 1 .45 1 1v13.637l-5.162-3.668a.49.49 0 0 0-.676 0z" fill-rule="evenodd"></path>
 												</svg></a></span>
 									</div>

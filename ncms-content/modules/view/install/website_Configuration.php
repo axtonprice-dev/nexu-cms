@@ -34,9 +34,7 @@ if (isset($_GET['submit']) && isset($_POST['site_name']) && isset($_POST['site_d
     updateConfiguration("site_email", encryptData($_POST["site_email"]));
     updateConfiguration("site_keywords", $_POST["site_keywords"]);
     updateConfiguration("site_language", "en-US");
-    updateConfiguration("admin_email", encryptData($_POST["adminacc_email"]));
-    updateConfiguration("admin_username", encryptData($_POST["adminacc_username"]));
-    updateConfiguration("admin_password", encryptData($_POST["adminacc_password"]));
+    createNewUser($_POST["adminacc_email"], $_POST["adminacc_username"], encryptData($_POST["adminacc_password"]));
     header("Location: ?pg=3");
 }
 ?>
