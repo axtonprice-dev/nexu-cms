@@ -280,7 +280,7 @@
  * animation flicker-4
  * ----------------------------------------
  */
-        @-webkit-keyframes flicker-4 {
+        @keyframes flicker-4 {
 
             0%,
             100% {
@@ -501,7 +501,7 @@
  * animation vibrate-1
  * ----------------------------------------
  */
-        @-webkit-keyframes vibrate-1 {
+        @keyframes vibrate-1 {
             0% {
                 -webkit-transform: translate(0);
                 transform: translate(0);
@@ -579,7 +579,7 @@
  * animation wobble-ver-right
  * ----------------------------------------
  */
-        @-webkit-keyframes wobble-ver-right {
+        @keyframes wobble-ver-right {
 
             0%,
             100% {
