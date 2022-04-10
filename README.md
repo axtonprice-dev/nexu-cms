@@ -1,6 +1,6 @@
 <h1>Welcome to Nexu CMS 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-v0.0.1_Alpha-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-v0.0.5_Alpha-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/axtonprice/nexu-cms/blob/main/LICENSE" target="_blank">
     <img alt="License: MIT License" src="https://img.shields.io/badge/License-MIT License-yellow.svg" />
   </a>
