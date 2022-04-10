@@ -159,7 +159,10 @@
             Woops! <br>Something went wrong :(
         </h1>
         <h2 class="error-subtitle">
-            This probably wasn't your fault. Please try again later!
+            The system database has been misconfigured. <br>
+            Please contact the site administrator in order to fix the issue!<br>
+            <br>
+            <code>Error: One or more tables are missing from the database!</code>
         </h2>
 
 

@@ -1,19 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <title>403 Error</title>
     <link rel="icon" type="image/x-icon" href="../../ncms-content/assets/img/favicon.png">
     <meta name="description" content="Access to this page is restricted. Please check with the site admin if you believe this is a mistake."> <!-- ˜150 chars -->
     <meta property="og:title" content="403 Error">
     <meta property="og:description" content="Access to this page is restricted. Please check with the site admin if you believe this is a mistake."> <!-- ˜300 chars -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
-
-
-<body>
-    <div class="lock"></div>
-    <div class="message">
-        <h1>Access to this page is restricted</h1>
-        <p>Please check with the site admin if you believe this is a mistake.</p>
-    </div>
-</body>
 
 <style>
     @import url("https://fonts.googleapis.com/css?family=Lato");
@@ -112,3 +108,14 @@
         }
     }
 </style>
+
+
+<body>
+    <div class="lock"></div>
+    <div class="message">
+        <h1>Access to this page is restricted</h1>
+        <p style="text-align: center">Please check with the site admin if you believe this is a mistake.</p>
+    </div>
+</body>
+
+</html>

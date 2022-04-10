@@ -159,9 +159,12 @@
             Woops! <br>Something went wrong :(
         </h1>
         <h2 class="error-subtitle">
-            This probably wasn't your fault. Please try again later!
-        </h2>
+            The system database has been misconfigured. <br>
+            Please contact the site administrator in order to fix the issue!<br>
+            <br>
+            <code>Error: Failed to connect to database with provided details!</code>
 
+        </h2>
 
     </div>
 

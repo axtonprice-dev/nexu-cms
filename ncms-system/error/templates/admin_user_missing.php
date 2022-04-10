@@ -159,8 +159,12 @@
             Woops! <br>Something went wrong :(
         </h1>
         <h2 class="error-subtitle">
-            This probably wasn't your fault. Please try again later!
-        </h2>
+            The system detected a security issue, and has temporarily rejected requests.
+            Please contact the site administrator in order to resolve the issue!
+            <br><br>
+            <code>Error: No administration user record found in database!</code>
+
+            <a href="" </h2>
 
 
     </div>
