@@ -35,7 +35,7 @@ $site_settings = array(
 
     "index_welcome_header_message" => "Welcome to %site% 👋",
     "index_feature_tab_text" => "Featured",
-    "index_all_stores_tab_text" => "All Stories"
+    "index_all_stories_tab_text" => "All Stories"
 );
 if (!is_dir("../../ncms-storage/configuration/")) mkdir("../../ncms-storage/configuration/", 0777, true);
 if (!file_exists("../../ncms-storage/configuration/site_settings.json")) touch("../../ncms-storage/configuration/site_settings.json");
